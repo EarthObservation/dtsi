@@ -108,7 +108,7 @@ REF_HEIGHT = 545.417
 # ------------------------------------
 @st.cache_data
 def load_dem():
-    with rasterio.open("DMR.tif") as src:
+    with rasterio.open("cerknica_digital_twin/DMR.tif") as src:
         dem = src.read(1).astype(np.float32)
         transform_aff = src.transform
         crs = src.crs
