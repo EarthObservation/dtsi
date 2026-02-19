@@ -1,82 +1,121 @@
-# Digital Elevation Model (DEM) of the Cerknica Intermittent Lake Area
+# Lake Cerknica Digital Twin
 
-## Title
+Interactive DEM-based flood simulation web application  
+Developed at the University of Ljubljana, Faculty of Civil and Geodetic Engineering (UL FGG), 2026.
 
-Digital Elevation Model (DEM) of the Cerknica Intermittent Lake Area (Slovenia)  
-VHR UAV Survey, September 2025
+---
+
+## Overview
+
+This web application simulates the intermittent flooding phenomenon of Lake Cerknica (Slovenia) using a Digital Elevation Model (DEM).
+
+Users can interactively adjust the water level and instantly observe:
+
+- Flood extent (clipped to Area of Interest)
+- Flooded area (ha)
+- Water volume (hm³)
+- Interactive web map visualization
+
+The application operates in the Slovenian national coordinate system (EPSG:3794) and is transformed to WGS84 for web visualization.
+
+---
+
+## Live Application
+
+🔗 https://lake-cerknica-digital-twin.streamlit.app
+
+---
+
+## Digital Elevation Model (DEM)
+
+The public web application uses a **15 m resolution Digital Elevation Model (DEM)** to ensure:
+
+- Real-time raster processing performance  
+- Stable cloud deployment  
+- Efficient interactive visualization  
+
+The reduced-resolution DEM preserves the overall morphologic characteristics of the Cerknica lake basin while allowing responsive simulation in a web environment.
+
+### Higher-Resolution Data
+
+Higher-resolution datasets are available internally at UL FGG:
+
+- 1 m DEM
+- Very High Resolution (VHR) UAV-derived DEM (September 2025 survey)
+
+These datasets are not included in this public repository.
+
+---
+
+## Methodology
+
+The flood simulation workflow includes:
+
+1. Water level definition (cm → absolute elevation)
+2. Raster-based flood mask generation
+3. Raster-to-vector conversion
+4. AOI clipping
+5. Area computation from clipped polygons
+6. Volume estimation from water depth (DEM difference)
+7. Web map visualization (Folium / Leaflet)
+
+---
+
+## Technical Stack
+
+- Python 3.10
+- Streamlit
+- Rasterio
+- GeoPandas
+- Shapely
+- PyProj
+- Folium
+
+---
+
+## Project Structure
+cerknica_digital_twin/
+│
+├── app.py
+├── requirements.txt
+├── DMR.tif (15 m DEM)
+├── aoi.gpkg
+└── UL_FGG-logoENG-HOR-RGB_color.png
+
 
 ---
 
 ## Authors
 
-Klemen Kozmus Trajkovski (UL FGG)  
-Krištof Oštir (UL FGG)  
-Ana Potočnik Buhvald (UL FGG)
+Ana Potočnik Buhvald  
+Krištof Oštir  
+Neja Flogie  
+Klemen Kozmus Trajkovski  
+
+University of Ljubljana  
+Faculty of Civil and Geodetic Engineering (UL FGG)
 
 ---
 
-## Description
+## Data Policy
 
-This dataset contains a Very High Resolution (VHR) Digital Elevation Model (DEM)  
-of the Cerknica Intermittent Lake (Slovenia), created from a UAV survey performed  
-in early September 2025 during a dry phase of the lake.
+The 15 m DEM included in this repository is used for demonstration and web visualization purposes.
 
-The surface was mapped under dry conditions, enabling high-accuracy reconstruction  
-of the lakebed and surrounding floodplain.
-
-The DEM was generated using a photogrammetric Structure-from-Motion (SfM) and  
-Multi-View Stereo (MVS) workflow, including:
-
-- Tie-point extraction  
-- Bundle adjustment  
-- Dense point cloud generation  
-- Interpolation  
-
-Source imagery was acquired at a ground sampling distance (GSD) of 2–3 cm.  
-The final dataset is delivered as:
-
-- 25 cm DEM (primary product)
-- Optional 1 m resampled DEM
-
----
-
-## License
-
-UL FGG Internal Use License  
-
-These data are the intellectual property of the University of Ljubljana,  
-Faculty of Civil and Geodetic Engineering (UL FGG).
-
-Use is permitted for internal, non-commercial purposes only.  
-Redistribution, public release, or sharing with third parties is not allowed  
-without prior written permission from UL FGG.
+High-resolution UAV-derived elevation data (2025) remain the intellectual property of UL FGG and are not publicly distributed.
 
 ---
 
 ## Citation
 
-Kozmus Trajkovski, K., Oštir, K., & Potočnik Buhvald, A. (2025).  
-Digital Elevation Model (DEM) of the Intermittent Lake Cerknica Area (Slovenia),  
-UAV Survey 2025, UL FGG.
+If referencing this application, please cite:
+
+Potočnik Buhvald, A., Oštir, K., Flogie, N., & Kozmus Trajkovski, K. (2026).  
+Lake Cerknica Digital Twin – DEM-based flood simulation web application.  
+University of Ljubljana, UL FGG.
 
 ---
 
-## Metadata
+## License
 
-COPYRIGHT: © 2025 University of Ljubljana, Faculty of Civil and Geodetic Engineering (UL FGG)  
-LICENSE: Internal use only. Redistribution or public disclosure is not permitted.  
-CITATION: Kozmus Trajkovski, K., Oštir, K., & Potočnik Buhvald, A. (2025).
+This project was developed for research and educational purposes.
 
----
-
-## Contact
-
-University of Ljubljana  
-Faculty of Civil and Geodetic Engineering (UL FGG)  
-
-Email: ana.potocnik-buhvald@fgg.uni-lj.si  
-Web: https://www.fgg.uni-lj.si/
-
----
-
-This README file must accompany the dataset at all times.
