@@ -10,7 +10,7 @@ from streamlit_vertical_slider import vertical_slider
 # ------------------------------------
 # PAGE CONFIG
 # ------------------------------------
-st.set_page_config(layout="wide")
+st.set_page_config(layout="centered")
 
 # ------------------------------------
 # GLOBAL STYLE (TEXT x2, numbers unchanged)
