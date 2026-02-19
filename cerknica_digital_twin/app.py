@@ -123,7 +123,7 @@ dem, transform_aff, crs, pixel_size = load_dem()
 # ------------------------------------
 st.markdown("<div class='section-header'>Water Level Simulation</div>", unsafe_allow_html=True)
 
-# col_slider, col_map = st.columns([1,5])
+col_slider, col_map = st.columns([1,5])
 
 with col_slider:
 
