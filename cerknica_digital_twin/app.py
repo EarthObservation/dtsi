@@ -123,7 +123,8 @@ dem, transform_aff, crs, pixel_size = load_dem()
 # ------------------------------------
 st.markdown("<div class='section-header'>Water Level Simulation</div>", unsafe_allow_html=True)
 
-col_slider, col_map = st.columns([1,5])
+# col_slider, col_map = st.columns([1,5])
+col_slider = st.columns([1])[0]
 
 with col_slider:
 
@@ -217,7 +218,7 @@ with col_map:
     bounds = aoi_web.total_bounds
     m.fit_bounds([[bounds[1], bounds[0]], [bounds[3], bounds[2]]])
 
-    st_folium(m, use_container_width=True, height=720)
+    st_folium(m, use_container_width=True, height=900)
 
 
 # ------------------------------------
