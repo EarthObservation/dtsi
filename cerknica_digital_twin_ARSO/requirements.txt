@@ -9,3 +9,4 @@ pyproj
 shapely
 lxml
 streamlit-vertical-slider
+streamlit-toggle
