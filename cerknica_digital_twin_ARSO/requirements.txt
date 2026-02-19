@@ -1,0 +1,11 @@
+streamlit
+numpy
+rasterio
+geopandas
+fiona
+folium
+streamlit-folium
+pyproj
+shapely
+lxml
+streamlit-vertical-slider
