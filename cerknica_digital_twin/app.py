@@ -32,12 +32,12 @@ st.markdown("""
 
 /* Default text doubled */
 html, body, [class*="css"]  {
-    font-size: 36px;
+    font-size: 26px;
 }
 
 /* Title */
 .main-title {
-    font-size: 66px;
+    font-size: 56px;
     font-weight: 700;
 }
 
@@ -45,34 +45,34 @@ html, body, [class*="css"]  {
     font-size: 52px;
     font-weight: 600;
     color: #B00020;
-    margin-bottom: 30px;
+    margin-bottom: 26px;
 }
 
 /* Section header */
 .section-header {
-    font-size: 42px;
+    font-size: 32px;
     font-weight: 600;
     margin-bottom: 15px;
 }
 
 /* Metric numbers (UNCHANGED) */
 .metric-number {
-    font-size: 62px;
+    font-size: 52px;
     font-weight: 700;
     color: #003366;
 }
 
 .metric-unit {
-    font-size: 32px;
+    font-size: 22px;
 }
 
 .metric-label {
-    font-size: 32px;
+    font-size: 22px;
 }
 
 /* Footer */
 .footer {
-    font-size: 32px;
+    font-size: 22px;
     color: #777777;
     margin-top: 50px;
 }
@@ -155,7 +155,7 @@ with col_slider:
         <div style='color:#B00020; font-size:32px; font-weight:700;'>{h_cm} cm</div>
         <br>
         <div><b>Elevation</b></div>
-        <div style='font-size:34px; color:#003366;'>{h_abs:.2f} m a.s.l.</div>
+        <div style='font-size:30px; color:#003366;'>{h_abs:.2f} m a.s.l.</div>
     </div>
     """, unsafe_allow_html=True)
 
