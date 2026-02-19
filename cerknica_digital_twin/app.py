@@ -24,6 +24,12 @@ st.markdown("""
     padding-bottom: 2rem;
 }
 
+/* Limit overall content width */
+.block-container {
+    max-width: 1100px;
+    margin: auto;
+}
+
 /* Default text doubled */
 html, body, [class*="css"]  {
     font-size: 36px;
