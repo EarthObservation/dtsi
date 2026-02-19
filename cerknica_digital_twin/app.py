@@ -9,7 +9,7 @@ from streamlit_folium import st_folium
 # ------------------------------------
 # Logo
 # ------------------------------------
-st.image("UL_FGG-logoENG-HOR-RGB_color.png", width=660)
+st.image("cerknica_digital_twin/UL_FGG-logoENG-HOR-RGB_color.png", width=660)
 
 st.markdown(
     "### Authors: Ana Potočnik Buhvald, Krištof Oštir, Neja Flogie, Klemen Kozmus Trajkovski"
@@ -32,7 +32,7 @@ REF_HEIGHT = 545.417  # m a.s.l.
 # ------------------------------------
 @st.cache_data
 def load_dem():
-    with rasterio.open("DMR.tif") as src:
+    with rasterio.open("cerknica_digital_twin/DMR.tif") as src:
         dem = src.read(1).astype(np.float32)
         transform_aff = src.transform
         crs = src.crs
@@ -72,7 +72,7 @@ gdf = gpd.GeoDataFrame.from_features(list(results), crs=crs)
 # ------------------------------------
 # Load AOI (EPSG:3794)
 # ------------------------------------
-aoi = gpd.read_file("aoi.gpkg")
+aoi = gpd.read_file("cerknica_digital_twin/aoi.gpkg")
 
 # ------------------------------------
 # Clip flood polygons
