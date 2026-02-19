@@ -95,7 +95,7 @@ with col_title:
     )
 
 with col_logo:
-    st.image("cerknica_digital_twin/UL_FGG-logoENG-HOR-RGB_color.png", width=720)
+    st.image("cerknica_digital_twin/UL_FGG-logoENG-HOR-RGB_color.png", width=840)
 
 # ------------------------------------
 # REFERENCE HEIGHT
@@ -149,7 +149,7 @@ with col_slider:
         <div style='color:#B00020; font-size:32px; font-weight:700;'>{h_cm} cm</div>
         <br>
         <div><b>Elevation</b></div>
-        <div style='font-size:24px; color:#003366;'>{h_abs:.2f} m a.s.l.</div>
+        <div style='font-size:34px; color:#003366;'>{h_abs:.2f} m a.s.l.</div>
     </div>
     """, unsafe_allow_html=True)
 
