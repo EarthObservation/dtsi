@@ -74,16 +74,16 @@ The flood simulation workflow includes:
 ---
 
 ## Project Structure
+
+```
 cerknica_digital_twin/
 │
 ├── app.py
 ├── requirements.txt
-├── DMR.tif (15 m DEM)
+├── DMR.tif              (15 m DEM)
 ├── aoi.gpkg
 └── UL_FGG-logoENG-HOR-RGB_color.png
-
-
----
+```
 
 ## Authors
 
