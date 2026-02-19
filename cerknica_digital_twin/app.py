@@ -24,6 +24,12 @@ st.markdown("""
     padding-bottom: 2rem;
 }
 
+/* Limit overall content width */
+.block-container {
+    max-width: 1300px;
+    margin: auto;
+}
+
 /* Default text doubled */
 html, body, [class*="css"]  {
     font-size: 26px;
@@ -36,10 +42,10 @@ html, body, [class*="css"]  {
 }
 
 .sub-title {
-    font-size: 42px;
+    font-size: 52px;
     font-weight: 600;
     color: #B00020;
-    margin-bottom: 30px;
+    margin-bottom: 26px;
 }
 
 /* Section header */
@@ -66,7 +72,7 @@ html, body, [class*="css"]  {
 
 /* Footer */
 .footer {
-    font-size: 25px;
+    font-size: 22px;
     color: #777777;
     margin-top: 50px;
 }
@@ -95,7 +101,7 @@ with col_title:
     )
 
 with col_logo:
-    st.image("UL_FGG-logoENG-HOR-RGB_color.png", width=720)
+    st.image("cerknica_digital_twin/UL_FGG-logoENG-HOR-RGB_color.png", width=840)
 
 # ------------------------------------
 # REFERENCE HEIGHT
@@ -108,7 +114,7 @@ REF_HEIGHT = 545.417
 # ------------------------------------
 @st.cache_data
 def load_dem():
-    with rasterio.open("DMR.tif") as src:
+    with rasterio.open("cerknica_digital_twin/DMR.tif") as src:
         dem = src.read(1).astype(np.float32)
         transform_aff = src.transform
         crs = src.crs
@@ -149,7 +155,7 @@ with col_slider:
         <div style='color:#B00020; font-size:32px; font-weight:700;'>{h_cm} cm</div>
         <br>
         <div><b>Elevation</b></div>
-        <div style='font-size:24px; color:#003366;'>{h_abs:.2f} m a.s.l.</div>
+        <div style='font-size:30px; color:#003366;'>{h_abs:.2f} m a.s.l.</div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -169,7 +175,7 @@ results = (
 )
 
 gdf = gpd.GeoDataFrame.from_features(list(results), crs=crs)
-aoi = gpd.read_file("aoi.gpkg")
+aoi = gpd.read_file("cerknica_digital_twin/aoi.gpkg")
 gdf = gpd.overlay(gdf, aoi, how="intersection")
 
 if gdf.empty:
@@ -217,7 +223,7 @@ with col_map:
     bounds = aoi_web.total_bounds
     m.fit_bounds([[bounds[1], bounds[0]], [bounds[3], bounds[2]]])
 
-    st_folium(m, use_container_width=True, height=840)
+    st_folium(m, use_container_width=True, height=900)
 
 
 # ------------------------------------
