@@ -26,7 +26,7 @@ st.markdown("""
 
 /* Limit overall content width */
 .block-container {
-    max-width: 1100px;
+    max-width: 2000px;
     margin: auto;
 }
 
