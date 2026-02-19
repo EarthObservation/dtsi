@@ -95,7 +95,7 @@ with col_title:
     )
 
 with col_logo:
-    st.image("UL_FGG-logoENG-HOR-RGB_color.png", width=720)
+    st.image("cerknica_digital_twin/UL_FGG-logoENG-HOR-RGB_color.png", width=720)
 
 # ------------------------------------
 # REFERENCE HEIGHT
@@ -169,7 +169,7 @@ results = (
 )
 
 gdf = gpd.GeoDataFrame.from_features(list(results), crs=crs)
-aoi = gpd.read_file("aoi.gpkg")
+aoi = gpd.read_file("cerknica_digital_twin/aoi.gpkg")
 gdf = gpd.overlay(gdf, aoi, how="intersection")
 
 if gdf.empty:
