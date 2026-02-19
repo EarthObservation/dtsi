@@ -26,17 +26,17 @@ st.markdown("""
 
 /* Default text doubled */
 html, body, [class*="css"]  {
-    font-size: 26px;
+    font-size: 36px;
 }
 
 /* Title */
 .main-title {
-    font-size: 56px;
+    font-size: 66px;
     font-weight: 700;
 }
 
 .sub-title {
-    font-size: 42px;
+    font-size: 52px;
     font-weight: 600;
     color: #B00020;
     margin-bottom: 30px;
@@ -44,29 +44,29 @@ html, body, [class*="css"]  {
 
 /* Section header */
 .section-header {
-    font-size: 32px;
+    font-size: 42px;
     font-weight: 600;
     margin-bottom: 15px;
 }
 
 /* Metric numbers (UNCHANGED) */
 .metric-number {
-    font-size: 52px;
+    font-size: 62px;
     font-weight: 700;
     color: #003366;
 }
 
 .metric-unit {
-    font-size: 22px;
+    font-size: 32px;
 }
 
 .metric-label {
-    font-size: 22px;
+    font-size: 32px;
 }
 
 /* Footer */
 .footer {
-    font-size: 25px;
+    font-size: 32px;
     color: #777777;
     margin-top: 50px;
 }
