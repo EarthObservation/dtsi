@@ -9,7 +9,7 @@ from streamlit_folium import st_folium
 # ------------------------------------
 # Logo
 # ------------------------------------
-st.image("UL_FGG-logoENG-HOR-RGB_color.png", width=660)
+st.image("cerknica_digital_twin/UL_FGG-logoENG-HOR-RGB_color.png", width=660)
 
 st.markdown(
     "### Authors: Ana Potočnik Buhvald, Krištof Oštir, Neja Flogie, Klemen Kozmus Trajkovski"
