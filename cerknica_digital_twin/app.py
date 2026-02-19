@@ -217,7 +217,7 @@ with col_map:
     bounds = aoi_web.total_bounds
     m.fit_bounds([[bounds[1], bounds[0]], [bounds[3], bounds[2]]])
 
-    st_folium(m, use_container_width=True, height=1500)
+    st_folium(m, use_container_width=True, height=720)
 
 
 # ------------------------------------
