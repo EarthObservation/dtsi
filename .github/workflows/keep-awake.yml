@@ -1,0 +1,21 @@
+name: Keep Streamlit apps awake
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping dtsi-lake-cerknica
+        run: |
+          curl --fail --location --silent --show-error --max-time 60 \
+            "https://dtsi-lake-cerknica.streamlit.app/"
+
+      - name: Ping lake-cerknica-digital-twin
+        run: |
+          curl --fail --location --silent --show-error --max-time 60 \
+            "https://lake-cerknica-digital-twin.streamlit.app/"
