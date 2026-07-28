@@ -10,12 +10,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Ping dtsi-lake-cerknica
+      - name: Ping both Streamlit apps
+        shell: bash
         run: |
-          curl --fail --location --silent --show-error --max-time 60 \
-            "https://dtsi-lake-cerknica.streamlit.app/"
+          set -e
 
-      - name: Ping lake-cerknica-digital-twin
-        run: |
-          curl --fail --location --silent --show-error --max-time 60 \
+          for url in \
+            "https://dtsi-lake-cerknica.streamlit.app/" \
             "https://lake-cerknica-digital-twin.streamlit.app/"
+          do
+            echo "Pinging $url"
+
+            status=$(curl \
+              --request GET \
+              --silent \
+              --show-error \
+              --connect-timeout 20 \
+              --max-time 60 \
+              --output /dev/null \
+              --write-out "%{http_code}" \
+              --user-agent "Mozilla/5.0 GitHub-Actions-Streamlit-Keepalive" \
+              "$url")
+
+            echo "HTTP status: $status"
+
+            if [ "$status" -lt 200 ] || [ "$status" -ge 400 ]; then
+              echo "Unexpected HTTP status for $url: $status"
+              exit 1
+            fi
+          done
