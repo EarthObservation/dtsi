@@ -6,28 +6,68 @@ on:
   workflow_dispatch:
 
 jobs:
-  ping:
+  wake:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check both Streamlit apps
-        shell: bash
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Playwright
         run: |
-          set -e
+          npm install playwright
+          npx playwright install chromium --with-deps
 
-          for url in \
-            "https://dtsi-lake-cerknica.streamlit.app/_stcore/health" \
-            "https://lake-cerknica-digital-twin.streamlit.app/_stcore/health"
-          do
-            echo "Checking $url"
+      - name: Wake Streamlit apps
+        run: |
+          node <<'EOF'
+          const { chromium } = require('playwright');
 
-            curl \
-              --fail \
-              --silent \
-              --show-error \
-              --connect-timeout 20 \
-              --max-time 60 \
-              "$url"
+          const urls = [
+            'https://dtsi-lake-cerknica.streamlit.app/',
+            'https://lake-cerknica-digital-twin.streamlit.app/'
+          ];
 
-            echo
-          done
+          (async () => {
+            const browser = await chromium.launch({ headless: true });
+
+            for (const url of urls) {
+              console.log(`Opening ${url}`);
+
+              const page = await browser.newPage();
+
+              try {
+                await page.goto(url, {
+                  waitUntil: 'domcontentloaded',
+                  timeout: 60000
+                });
+
+                await page.waitForTimeout(3000);
+
+                const wakeButton = page.getByRole('button', {
+                  name: /get this app back up/i
+                });
+
+                if (await wakeButton.count()) {
+                  console.log('App is sleeping. Clicking wake button...');
+                  await wakeButton.first().click();
+
+                  await page.waitForTimeout(15000);
+
+                  console.log('Wake request sent.');
+                } else {
+                  console.log('App appears to already be awake.');
+                }
+
+              } catch (error) {
+                console.error(`Problem with ${url}:`, error.message);
+              } finally {
+                await page.close();
+              }
+            }
+
+            await browser.close();
+          })();
+          EOF
